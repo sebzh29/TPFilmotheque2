@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http:///www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Détails du film</title>
+</head>
+<body>
+<div class="container-fluid">
+  <header></header>
+  <main>
+    <div class="row text-center mt-5 mb-5">
+      <h1>Détails du film</h1>
+    </div>
+    <div class="row col-6 offset-3" th:object="${film}">
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" class="form-control" id="titre" th:field="*{titre}" >
+      </div>
+      <div class="mb-3">
+        <label for="annee" class="form-label">Année</label>
+        <input type="text" class="form-control" id="annee" th:field="*{annee}" >
+      </div>
+      <div class="mb-3">
+        <label for="duree" class="form-label">Durée</label>
+        <input type="text" class="form-control" id="duree" th:field="*{duree}">
+      </div>
+      <div class="mb-3">
+        <label for="synopsis" class="form-label">Synopsis</label>
+        <textarea id="synopsis" class="form-control" rows="3" th:field="*{synopsis}" ></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="genre"  th:field="*{genre.libelle}" />
+      </div>
+      <div class="mb-3">
+        <label for="realisateur" class="form-label">Réalisateur</label>
+        <input type="text" class="form-control" id="realisateur" th:value="*{realisateur.nom +' '+realisateur.prenom}" />
+      </div>
+      <div class="mb-3">
+        <label for="acteurs" class="form-label">Acteurs</label>
+        <select id="acteurs" class="form-control" multiple >
+          <option th:each="acteur: ${film.acteurs}"
+                  th:value="${acteur.id}"
+                  th:text="${acteur.nom+' '+acteur.prenom}" ></option>
+        </select>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
