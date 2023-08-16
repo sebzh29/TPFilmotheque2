@@ -1,5 +1,7 @@
 package fr.eni.tpfilmo.bo;
 
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class Avis implements Serializable {
     private int note;
     private String commentaire;
 
+
     private Film film;
 
+    @ManyToOne
     private Membre membre;
 }

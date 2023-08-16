@@ -1,11 +1,13 @@
 package fr.eni.tpfilmo.bo;
 
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +23,8 @@ public class Membre implements Serializable {
     private String login;
     private String password;
     private boolean isAdmin;
+
+    @OneToMany
+    private List<Avis> avis;
 
 }
